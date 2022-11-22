@@ -36,13 +36,10 @@ jobs:
           remote_key: ${{ secrets.PLUGINDOCS_DEPLOY_PRIVATE_KEY }}
   deploy_changelog:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./
     steps:
       - uses: actions/checkout@v3
       - run: mkdir -p $GITHUB_WORKSPACE/output
-      - run: cp -vr CHANGELOG.md $GITHUB_WORKSPACE/output/CHANGELOG.md
+      - run: cp -vr CHANGELOG.md $GITHUB_WORKSPACE/output
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2.1
         with:
