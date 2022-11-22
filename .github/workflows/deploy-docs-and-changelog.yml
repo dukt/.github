@@ -36,6 +36,9 @@ jobs:
           remote_key: ${{ secrets.PLUGINDOCS_DEPLOY_PRIVATE_KEY }}
   deploy_changelog:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
     steps:
       - uses: actions/checkout@v3
       - run: mkdir -p $GITHUB_WORKSPACE/output
