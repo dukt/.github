@@ -38,13 +38,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: mkdir -p $GITHUB_WORKSPACE/output/${{ inputs.plugin_handle }}
-      - run: cp -v CHANGELOG.md $GITHUB_WORKSPACE/output/${{ inputs.plugin_handle }}
+      - run: mkdir -p $GITHUB_WORKSPACE/output/
+      - run: cp -v CHANGELOG.md $GITHUB_WORKSPACE/output/
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2.1
         with:
           switches: -avzr --delete
-          path: $GITHUB_WORKSPACE/output/${{ inputs.plugin_handle }}
+          path: $GITHUB_WORKSPACE/output/
           remote_path: ${{ secrets.PLUGIN_CHANGELOGS_DEPLOY_PATH }}${{ inputs.plugin_handle }}
           remote_host: ${{ secrets.PLUGINDOCS_DEPLOY_REMOTE_HOST }}
           remote_port: ${{ secrets.PLUGINDOCS_DEPLOY_REMOTE_PORT }}
