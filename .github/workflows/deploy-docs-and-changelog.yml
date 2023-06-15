@@ -21,8 +21,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn build
+      - run: npm
+      - run: npm run build
       - run: cp -vr docs/.vuepress/dist $GITHUB_WORKSPACE
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2.1
